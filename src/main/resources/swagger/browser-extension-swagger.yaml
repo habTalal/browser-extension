@@ -1,0 +1,184 @@
+openapi: 3.0.0
+info:
+  title: defaultTitle
+  description: defaultDescription
+  version: '0.1'
+servers:
+  - url: 'https://petstore.swagger.io'
+paths:
+  '/browserextension/retrieveProjectClusters':
+    get:
+      tags:
+        - browserextension
+      operationId: retrieveProjectClusters
+      description: Retrieve Project Clusters
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ProjectClustersDetailsResponse'
+        '404':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  type:
+                    type: string
+                  message:
+                    type: string
+              examples:
+                '0':
+                  value: '{"code":1,"type":"error","message":"User not found"}'
+      servers:
+        - url: 'https://petstore.swagger.io'
+  '/browserextension/retrieveClusters':
+    get:
+      tags:
+        - browserextension
+      operationId: retrieveClusters
+      description: retrieveClusters
+      parameters:
+        - name: projectName
+          in: query
+          description: |
+            Project Name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: '#/components/schemas/ClusterDetailsResponse'
+        '404':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  type:
+                    type: string
+                  message:
+                    type: string
+              examples:
+                '0':
+                  value: '{"code":1,"type":"error","message":"User not found"}'
+      servers:
+        - url: 'https://petstore.swagger.io'
+  '/browserextension/retrieveCdEnvironments':
+    get:
+      tags:
+        - browserextension
+      operationId: retrieveCdEnvironments
+      description: retrieveCdEnvironments
+      parameters:
+        - name: projectName
+          in: query
+          description: |
+            Project Name
+          required: true
+          schema:
+            type: string
+        - name: clusterName
+          in: query
+          description: |
+            Cluster Name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CdEnvironmentsDetailsResponse'
+        '404':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  type:
+                    type: string
+                  message:
+                    type: string
+              examples:
+                '0':
+                  value: '{"code":1,"type":"error","message":"User not found"}'
+      servers:
+        - url: 'https://petstore.swagger.io'
+components:
+  parameters:
+    path-fetchCriteria:
+      name: fetchCriteria
+      in: query
+      description: |
+        Locale of the client
+      required: false
+      schema:
+        type: string
+    path-project:
+      name: projectName
+      in: query
+      description: |
+        Project Name
+      required: true
+      schema:
+        type: string
+  schemas:
+    ProjectDetailsResponse:
+      type: object
+      properties:
+        projectName:
+          type: string
+          example: RTB
+    ClusterDetailsResponse:
+      type: object
+      properties:
+        clusterName:
+          type: string
+          example: inocprtb410
+    CdEnvironmentsDetailsResponse:
+      type: object
+      properties:
+        cdEnvironments:
+          type: array
+          example: dev
+          items:
+            type: string
+        clusterName:
+          type: string
+          example: inocprtb410
+        projectName:
+          type: string
+          example: RTB
+    ProjectClustersDetailsResponse:
+        type: object
+        properties:
+          projectClusters:
+            type: object
+            description: "Projects\n"
+            additionalProperties:
+              type: array
+              description: "Project Clusters\n"
+              items:
+                type: string
+                description: "Cluster Name\n"
+                example: inocprtb410

@@ -1,0 +1,174 @@
+openapi: 3.0.0
+info:
+  title: defaultTitle
+  description: defaultDescription
+  version: '0.1'
+servers:
+  - url: 'https://petstore.swagger.io'
+paths:
+  '/user/getUser':
+    get:
+      tags:
+        - user
+      operationId: getUserByFilter
+      description: getUserByFilter id / userName
+      parameters:
+        - $ref: '#/components/parameters/path-fetchCriteria'
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                '0':
+                  value: >-
+                    {"code":200,"type":"unknown","message":"9223372000000176643"}
+        '404':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  type:
+                    type: string
+                  message:
+                    type: string
+              examples:
+                '0':
+                  value: '{"code":1,"type":"error","message":"User not found"}'
+      servers:
+        - url: 'https://petstore.swagger.io'
+  '/user/createUser':
+    put:
+      tags:
+        - user
+      operationId: createUser
+      description: Auto generated using Swagger Inspector
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+            examples:
+              '0':
+                value: |-
+                  {
+                      "id": 0,
+                      "username": "string",
+                      "firstName": "string",
+                      "lastName": "string",
+                      "email": "string",
+                      "password": "string",
+                      "phone": "string",
+                      "userStatus": 0
+                  }
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateUserResponse'
+              examples:
+                '0':
+                  value: >-
+                    {"code":200,"type":"unknown","message":"9223372000000176643"}
+      servers:
+        - url: 'https://petstore.swagger.io'
+    servers:
+      - url: 'https://petstore.swagger.io'
+  /user/createWithList:
+    post:
+      tags:
+        - user
+      operationId: createUserWithList
+      description: Auto generated using Swagger Inspector
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              minLength: 1
+              items:
+                $ref: '#/components/schemas/User'
+            examples:
+              '0':
+                value: |-
+                  [
+                      {
+                          "id": 0,
+                          "username": "string",
+                          "firstName": "string",
+                          "lastName": "string",
+                          "email": "string",
+                          "password": "string",
+                          "phone": "string",
+                          "userStatus": 0
+                      }
+                  ]
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateUserResponse'
+              examples:
+                '0':
+                  value: '{"code":200,"type":"unknown","message":"ok"}'
+      servers:
+        - url: 'https://petstore.swagger.io'
+    servers:
+      - url: 'https://petstore.swagger.io'
+components:
+  parameters:
+    path-fetchCriteria:
+      name: fetchCriteria
+      in: query
+      description: |
+        Locale of the client
+      required: false
+      schema:
+        type: string
+  schemas:
+    User:
+      type: object
+      properties:
+        creationDate:
+          type: string
+          format: date-time
+        lastModifiedDate:
+          type: string
+          format: date-time
+        documentId:
+          type: string
+        userId:
+          type: string
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        phone:
+          type: string
+        userStatus:
+          type: string
+    CreateUserResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string

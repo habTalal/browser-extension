@@ -1,0 +1,31 @@
+#logging:
+#  level:
+#    org.springframework.data.couchbase.repository.query: DEBUG
+#server:
+#  port: 9300
+#spring:
+#  application:
+#    name: springboot-couchbase
+#  couchbase:
+#    bootstrap-hosts: "127.0.0.1"
+#    bucket:
+#      name: com.amdocs.exam.user
+#      password: talalh
+#  data:
+#    couchbase:
+#      auto-index: true
+#
+#couchbase:
+#  connectionstring: couchbase://127.0.0.1
+#  username: com.amdocs.exam.user
+#  password: talalh
+#  #bucket-name: "com.amdocs.exam.user
+server:
+  port: 1544
+spring:
+  jackson:
+    deserialization:
+      adjust_dates_to_context_time_zone: false
+    serialization:
+      write_dates_as_timestamps: false
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSSZ
